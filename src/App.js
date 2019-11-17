@@ -234,7 +234,7 @@ function App() {
               placement="bottom"
               overlay={popover}
             >
-              <Navbar.Text>About</Navbar.Text>
+              <Navbar.Text style={{cursor: 'pointer'}}>About</Navbar.Text>
             </OverlayTrigger>
           </Navbar.Collapse>
         </Container>
