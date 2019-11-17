@@ -393,7 +393,6 @@ function App() {
         alltwentywords={allTwentywords}
         alltwentywordobject={allTwentyWordObject}
         show={modalShow}
-        onHide={() => setModalShow(false)}
       />
     </div>
   );

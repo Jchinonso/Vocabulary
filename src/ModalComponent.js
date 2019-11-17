@@ -9,6 +9,8 @@ import {
   Table
 } from "react-bootstrap";
 
+import FontAwesome from "react-fontawesome";
+
 function ModalComponent(props) {
   const [singleEnglishWord, setSingleEnglishWord] = useState("");
   const [counter, setCounter] = useState(1);
@@ -17,19 +19,29 @@ function ModalComponent(props) {
   const [result, setResult] = useState(0);
   const [preview, setPreview] = useState([]);
   const [previewScreen, setPreviewScreen] = useState(false);
+  const [show, setShow] = useState(false);
   useEffect(() => {
     setSingleEnglishWord(props.alltwentywords[0]);
     setCounter(1);
     setProgress(5);
+    setShow(props.show);
   }, [props.alltwentywords]);
   function handleOnChange(e) {
     e.preventDefault();
     setTranslationText(e.target.value);
   }
+
+  function handlePreviewBack(e) {
+    e.preventDefault()
+    setPreviewScreen(false)
+    setCounter(1);
+    setProgress(5);
+  }
   function handleButtonClick(e) {
     e.preventDefault();
     if (counter === 20) {
       setPreviewScreen(true);
+      setTranslationText('')
     }
     if (counter < 20) {
       if (translationText.trim().length > 0) {
@@ -47,7 +59,7 @@ function ModalComponent(props) {
             status: status === 5 ? "hit" : "miss"
           }
         ]);
-        setTranslationText('');
+        setTranslationText("");
         setCounter(counter + 1);
         setSingleEnglishWord(props.alltwentywords[counter]);
         setProgress(progress + 5);
@@ -58,8 +70,10 @@ function ModalComponent(props) {
   return (
     <div>
       <Modal
-        {...props}
         size="lg"
+        animation
+        show={show}
+        backdrop="static"
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
@@ -70,12 +84,26 @@ function ModalComponent(props) {
       </Modal.Header> */}
         <Modal.Body
           style={{
-            height: "70vh",
+            height: "80vh",
             overflow: "auto"
           }}
         >
           {previewScreen ? (
             <div style={{ marginLeft: "20px", marginRight: "20px" }}>
+              <Row>
+                <span>
+                  <FontAwesome
+                    className="super-crazy-colors"
+                    name="backward"
+                    size="1.5x"
+                    onClick={handlePreviewBack}
+                    style={{
+                      textShadow: "0 1px 0 rgba(0, 0, 0, 0.1)",
+                      cursor: "pointer"
+                    }}
+                  />
+                </span>
+              </Row>
               <Row
                 style={{
                   display: "flex",
@@ -85,8 +113,10 @@ function ModalComponent(props) {
                   height: "20vh"
                 }}
               >
-                <span style={{fontSize: '25px'}}>Total Score</span>
-                <span style={{fontSize: '50px', fontWeight: 'weight'}}>{`${result}%`}</span>
+                <span style={{ fontSize: "25px" }}>Total Score</span>
+                <span
+                  style={{ fontSize: "50px", fontWeight: "weight" }}
+                >{`${result}%`}</span>
               </Row>
               <Table striped bordered hover size="sm">
                 <thead>
@@ -111,12 +141,27 @@ function ModalComponent(props) {
             </div>
           ) : (
             <div>
-              <Row style={{ display: "flex", justifyContent: "space-between" }}>
-                <span style={{ fontSize: "25px", marginLeft: "20px" }}>
-                  Word/Translation
+              <Row
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  margin: "20px"
+                }}
+              >
+                <span>
+                  <FontAwesome
+                    className="super-crazy-colors"
+                    name="backward"
+                    size="1.5x"
+                    onClick={() => setShow(false)}
+                    style={{
+                      textShadow: "0 1px 0 rgba(0, 0, 0, 0.1)",
+                      cursor: "pointer"
+                    }}
+                  />
                 </span>
-                <span style={{ fontSize: "25px", marginRight: "20px" }}>
-                  {counter + "/" + props.alltwentywords.length}
+                <span style={{ fontSize: "20px", marginLeft: "20px" }}>
+                  Word/Translation
                 </span>
               </Row>
               <Row style={{ display: "flex", justifyContent: "center" }}>
@@ -135,7 +180,8 @@ function ModalComponent(props) {
                 style={{
                   display: "flex",
                   justifyContent: "center",
-                  margin: "20px"
+                  margin: "20px",
+                  marginTop: '40px'
                 }}
               >
                 <InputGroup className="mb-3" size="md">
@@ -167,10 +213,10 @@ function ModalComponent(props) {
                   now={progress}
                   label={`${progress}%`}
                   style={{
-                    marginTop: "50px",
+                    marginTop: "70px",
                     marginLeft: "20px",
                     marginRight: "20px",
-                    width: "50vw"
+                    width: "30vw"
                   }}
                 />
               </div>
@@ -186,4 +232,3 @@ function ModalComponent(props) {
 }
 
 export default ModalComponent;
-
