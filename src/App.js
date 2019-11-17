@@ -374,11 +374,11 @@ function App() {
               <Card
                 variant="light"
                 style={{
-                  width: "50vw"
+                  width: "30vw"
                 }}
               >
                 <Button
-                  variant="primary"
+                  variant="secondary"
                   disabled={wordTranslated.length < 20}
                   onClick={handleStartTestClick}
                 >

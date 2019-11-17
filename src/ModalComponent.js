@@ -181,7 +181,7 @@ function ModalComponent(props) {
                   display: "flex",
                   justifyContent: "center",
                   margin: "20px",
-                  marginTop: '40px'
+                  marginTop: '60px'
                 }}
               >
                 <InputGroup className="mb-3" size="md">
@@ -213,7 +213,7 @@ function ModalComponent(props) {
                   now={progress}
                   label={`${progress}%`}
                   style={{
-                    marginTop: "70px",
+                    marginTop: "80px",
                     marginLeft: "20px",
                     marginRight: "20px",
                     width: "30vw"
