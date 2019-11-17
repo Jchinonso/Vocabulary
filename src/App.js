@@ -165,11 +165,7 @@ function App() {
   function handleStartTestClick(e) {
     e.preventDefault();
     let allTwentyObject = [];
-    for (let i = 0; i < 20; i++) {
-      allTwentyObject.push(
-        wordTranslated[Math.floor(Math.random() * wordTranslated.length)]
-      );
-    }
+    allTwentyObject = wordTranslated.sort(() => Math.random() - Math.random()).slice(0, 20)
     setAllTwentyWords([...allTwentyObject.map(item => item.word)]);
     setAllTwentyWordObject([...allTwentyObject]);
     setModalShow(true);
