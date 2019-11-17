@@ -23,7 +23,8 @@ function ModalComponent(props) {
   useEffect(() => {
     setSingleEnglishWord(props.alltwentywords[0]);
     setCounter(1);
-    setProgress(5);
+    setProgress(0);
+    setTranslationText('');
     setShow(props.show);
   }, [props.alltwentywords]);
   function handleOnChange(e) {
@@ -35,7 +36,7 @@ function ModalComponent(props) {
     e.preventDefault()
     setPreviewScreen(false)
     setCounter(1);
-    setProgress(5);
+    setProgress(0);
   }
   function handleButtonClick(e) {
     e.preventDefault();
@@ -74,6 +75,9 @@ function ModalComponent(props) {
         animation
         show={show}
         backdrop="static"
+        style={{
+          borderRadius: "50px",
+        }}
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
