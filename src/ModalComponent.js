@@ -25,6 +25,7 @@ function ModalComponent(props) {
     setCounter(1);
     setProgress(0);
     setResult(0);
+    setPreview([]);
     setTranslationText('');
     setShow(props.show);
   }, [props.alltwentywords]);
@@ -37,6 +38,7 @@ function ModalComponent(props) {
     e.preventDefault()
     setPreviewScreen(false)
     setResult(0);
+    setPreview([]);
     setCounter(1);
     setProgress(0);
   }
