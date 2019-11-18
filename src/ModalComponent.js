@@ -24,32 +24,44 @@ function ModalComponent(props) {
     setSingleEnglishWord(props.alltwentywords[0]);
     setCounter(1);
     setProgress(0);
+    setResult(0);
     setTranslationText('');
     setShow(props.show);
   }, [props.alltwentywords]);
   function handleOnChange(e) {
     e.preventDefault();
-    setTranslationText(e.target.value);
+    setTranslationText(e.target.value.trim());
   }
 
   function handlePreviewBack(e) {
     e.preventDefault()
     setPreviewScreen(false)
+    setResult(0);
     setCounter(1);
     setProgress(0);
   }
   function handleButtonClick(e) {
     e.preventDefault();
+    let singleText = props.alltwentywordobject.filter(
+      item => item.word === singleEnglishWord
+    )[0];
+    let status = singleText.interpretation === translationText ? 5 : 0;
     if (counter === 20) {
       setPreviewScreen(true);
+      setResult(result + status);
+        setPreview([
+          ...preview,
+          {
+            word: singleText.word,
+            interpretation: singleText.interpretation,
+            inputText: translationText,
+            status: status === 5 ? "hit" : "miss"
+          }
+        ]);
       setTranslationText('')
     }
     if (counter < 20) {
-      if (translationText.trim().length > 0) {
-        const singleText = props.alltwentywordobject.filter(
-          item => item.word === singleEnglishWord
-        )[0];
-        const status = singleText.interpretation === translationText ? 5 : 0;
+      if (translationText.length > 0) {
         setResult(result + status);
         setPreview([
           ...preview,

@@ -182,7 +182,7 @@ function App() {
   const [allTwentyWordObject, setAllTwentyWordObject] = useState([]);
   function handleEnglishWordChange(e) {
     e.preventDefault();
-    setEnglishWord(e.target.value);
+    setEnglishWord(e.target.value.trim());
   }
   function handleStartTestClick(e) {
     e.preventDefault();
@@ -196,7 +196,7 @@ function App() {
   }
   function handleGermanWordChange(e) {
     e.preventDefault();
-    setGermanWord(e.target.value);
+    setGermanWord(e.target.value.trim());
   }
   function handleRemoveItem(e, itemcopy) {
     e.preventDefault();
