@@ -1,0 +1,18 @@
+.Card-Container {
+  width: 50vw;
+  height: 200px;
+  box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.19);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 50px;
+}
+
+.Form {
+  margin-left: 20px
+}
+
+.Btn-Column {
+  display: flex;
+  align-items: flex-end
+}
