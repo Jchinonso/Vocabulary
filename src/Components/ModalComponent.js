@@ -47,7 +47,7 @@ function ModalComponent(props) {
     let singleText = props.alltwentywordobject.filter(
       item => item.word === singleEnglishWord
     )[0];
-    let status = singleText.interpretation === translationText ? 5 : 0;
+    let status = singleText.interpretation.toLowerCase() === translationText.toLowerCase() ? 5 : 0;
     if (counter === 20) {
       setPreviewScreen(true);
       setResult(result + status);
