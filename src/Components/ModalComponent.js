@@ -28,7 +28,7 @@ function ModalComponent(props) {
     setPreview([]);
     setTranslationText('');
     setShow(props.show);
-  }, [props.alltwentywords]);
+  }, [props.alltwentywords, props.show]);
   function handleOnChange(e) {
     e.preventDefault();
     setTranslationText(e.target.value.trim());
