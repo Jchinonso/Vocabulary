@@ -1,3 +1,5 @@
+#Vocabulary
+
 This Application lets you manage vocabulary for a foreign language to be learned. It consists of a Form where you can insert two words, one for the native language (let's say English) and one for the foreign language (let's say German). The vocabulary pairs are appended to a List and can be deleted.
 At any time you can start a Test mode which randomly chooses 20 words from the List in a random order. The Test mode then only shows one word at a time together with an input field where you insert the translated word. Submitting the translated word then shows the next word. The progress in the Test is indicated through a progress bar on bottom of the Test view. If no word is left, the Application will go to the Result view..
 
